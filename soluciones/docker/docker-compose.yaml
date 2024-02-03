@@ -1,0 +1,20 @@
+services:
+  web:
+    container_name: web
+    image: nginx
+    ports:
+      - "80:80"
+    networks:
+      - test
+  php:
+    container_name: php
+    build:
+      context: .
+      dockerfile: php.Dockerfile
+    ports:
+      - "127.0.0.1:9000:9000"
+    networks:
+      - test
+  bd:
+    container_name: mysql
+    image: mysql:8.3
